@@ -1,0 +1,435 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    list-style: none;
+}
+html{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+h3,h4{
+margin-top: 12px;
+font-weight:normal;
+text-align: left;
+}
+h3{
+color: #fff;
+font-size: 14px;
+}
+h4{
+font-size: 12px;
+line-height: 18px;
+}
+/*设置背景图片*/
+body{
+    background: black;
+}
+
+
+/*****导航栏+LOGO*****/
+.background{
+    height: 781px;
+    background: url("../img/bg2.jpg") no-repeat center;
+    margin: 0 auto;
+}
+/*单独设置主页按钮的left值*/
+.home{
+    margin-left: 25px;
+}
+.content{
+    width: 1000px;
+    height: 100px;
+    margin: 0 auto;
+}
+nav img{
+    float: left;
+    margin: 10px 20px;
+}
+nav ul{
+    width: 730px;
+    height: 80px;
+    margin-top: 20px;
+    float: right;
+    position: relative;
+    background: url(../img/nav_bg.png) left top no-repeat;
+    z-index: 2;
+}
+nav ul li{
+    display: inline-block;
+    width: 85px;
+    height: 80px;
+}
+/*设置导航栏文字*/
+nav ul li a{
+    display:inherit;
+    line-height: 70px;
+    width: 85px;
+    height: 80px;
+    text-shadow: 1px 1px 1px black;
+    font-size: 14px;
+}
+nav ul li a:hover{
+    transition: 0.4s all ease;
+    color: #63b1ff;
+}
+/*导航栏按钮背景效果*/
+.nav-hover{
+    width: 98px;
+    height: 78px;
+    background: url("../img/nav_hover.png");
+    position: absolute;
+    top: -2px;
+    left: 32px;
+    z-index: -1;
+}
+
+/****轮播图****/
+#slide{
+    width: 993px;
+    height: 340px;
+    padding-top: 25px;
+    background: url(../img/index2.png) 0 0 no-repeat;
+    margin: 0 auto;
+    position: relative;
+}
+#slide ul{
+    width: 840px;
+    height: 305px;
+    margin: 0 auto;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+#slide ul li{width: 840px;height: 305px;position: absolute;overflow: hidden;}
+/*****上一页下一页按钮******/
+#prev,#prev_action,#next,#next_action{
+    position: absolute;
+    background: url("../img/quanjiatong.png") -273px 0 no-repeat ;
+    display: block;
+    width: 41px;
+    height: 42px;
+    top: 170px;
+    cursor: pointer;
+}
+#prev{left: 17px;background-position: -274px -43px;}
+#prev_action{left: 17px;background-position: -273px 0;opacity: 0}
+#next{left:935px;background-position: -315px -43px;}
+#next_action{ left:935px;background-position: -314px 0;opacity: 0}
+
+/*****图片列表*****/
+#slide_menu{
+    width: 190px;
+    height: 32px;
+    position: absolute;
+    left: 764px;
+    cursor: pointer;
+}
+#slide_menu>a{
+    width: 33px;
+    height: 33px;
+    float: left;
+    position: relative;
+}
+#slide_menu>a>img{
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    display: block;
+    transition: 0.3s all ease;
+}
+
+
+/****课程列表****/
+.list{
+    width: 1013px;
+    margin: 0 auto;
+}
+.list li{
+    display: inline-block;
+}
+.listBG{
+    width: 330px;
+    height: 133px;
+    background: url(../img/list2-bg.png) no-repeat;
+    position: relative;
+    display: flex;
+}
+.listBG>div{
+    height: 105px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    z-index: 2;
+}
+.list-content{
+    width: 205px;
+    float: right;
+    margin-left: 5px;
+}
+h4>a{
+    color: #aaa;
+}
+
+/*****新闻***/
+.news1,.news2{
+    width: 492px;
+    height: 210px;
+    background: url(../img/news_bg.png) no-repeat;
+    display: inline-block;
+
+}
+.news-list{
+    margin-left: 13px;
+    margin-top: 8px;
+    width: 470px;
+    text-align: left;
+}
+.news-list span{font-size: 14px; color: white}
+.news-list span:hover{text-decoration:blink;
+    border-bottom: 1px solid #fff;}
+.new-date{float: right;}
+
+/****时钟****/
+.clock-3D{
+    height: 170px;
+    width: 993px;
+    margin: 0 auto;
+}
+
+
+
+
+/****留言板*****/
+.bbs{
+    position: fixed;
+    left: 0;
+    bottom: -365px;
+    width: 250px;
+    height: 400px;
+    z-index: 999999;
+}
+.bss-head{
+    width: 100%;
+    height: 35px;
+    position: relative;
+    background-color: #2b7cfa;
+    border-radius: 5px 5px 0 0;
+}
+.head-font{
+    position: absolute;
+    top: 6px;
+    left: 5%;
+    width: 90%;
+}
+.head-font p{float: left;}
+.head-font span{
+    width:20px ;
+    height: 20px;
+    float: right;
+    font-size: 26px;
+    margin-top: -8px;
+    cursor: pointer;
+}
+.bss-main{
+    width: 100%;
+    height: 360px;
+    background: white;
+}
+.message{
+    width: 240px;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+.message textarea{
+    width: 225px;
+    height: 92px;
+    resize: none;
+    padding: 4px;
+    text-align: left;
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow: auto;
+    color: black;
+    outline: 0;
+}
+.name,.tel,.address,.email{
+    width: 235px;
+    height: 35px;
+    margin: 5px auto;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+.name ins,.tel ins,.address ins,.email ins{
+    display: block;
+    float: left;
+    width: 12px;
+    height: 20px;
+    margin: 9px 0px 0px 10px;
+    background: url("../img/mess.png");
+}
+.name ins{background-position:48px 0;}
+.tel ins{background-position:15px 0;}
+.address ins{background-position:0 0;}
+.email ins{background-position:82px 0;}
+.name input,.tel input,.address input,.email input{
+    margin: 10px -15px 0 0;
+    text-align: left;
+    font-size: 12px;
+    width: 197px;
+    border: none;
+    height: 15px;
+    color: black;
+    outline: 0;
+}
+.submit{
+    width: 235px;
+    line-height: 32px;
+    border-radius: 6px;
+    color: #2b7cfa;
+    background: #FFFFFF;
+    border: 1px solid #2b7cfa;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+    outline: 0;
+}
+.mess-foot{
+    font-size: 12px;
+    padding-top: 6px;
+    margin-top: 5px;
+    border-top: 1px solid #ccc;
+}
+.mess-foot ins{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("../img/ice.png") -2px -121px;
+    background-size: 56px auto;
+}
+.mess-foot span{
+    color: #bdbdbd;
+    display: inline-block;
+    position: relative;
+    top: -3px;
+}
+
+
+/*****咨询****/
+.consult{
+    height: 150px;
+    width: 125px;
+    position: absolute;
+    top: 38%;
+    right: -125px;
+    background: #3290cd;
+}
+.consult-close{
+    width: 25px;
+    height: 66px;
+    background:url("../img/icon_close.png") no-repeat;
+    position: relative;
+    left: -25px;
+    top: 40px;
+    cursor: pointer;
+}
+.consult-head {
+    position: absolute;
+    top: 0;
+    width: 125px;
+    height: 70px;
+    background: url(../img/consult_BG.jpg) no-repeat;
+    background-size: 125px auto;
+    overflow: hidden;
+    display: block;
+}
+.consult-head ins{
+    background: url(../img/online.png) no-repeat;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 90px;
+    height: 30px;
+    overflow: hidden;
+    z-index: 15;
+}
+.consult-head div{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(50,144,205,0), #3290cd);
+}
+.consult-body{
+    width: 100%;
+    height: 85px;
+}
+.group-def,.group-bj,.group-sh{
+    width: 115px;
+    height: 20px;
+    background: #f7bd84;
+    margin: 6px auto;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 12px;
+    color: #bd4b13;
+    cursor: pointer;
+}
+.group-def ins,.group-bj ins,.group-sh ins{
+    width: 18px;
+    height: 18px;
+    background: url(../img/icon.png) -420px -20px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 7px;
+}
+.group-def span,.group-bj span,.group-sh span{font-size: 12px; color: #bd4b13;font-weight: bold}
+
+
+
+
+    /****小标题****/
+.title{
+    width: 1013px;
+    height: 50px;
+    background: url(../img/hotclassBG.png) no-repeat;
+    margin: 10px auto;
+}
+.title-font{
+    text-align: left;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 30px;
+}
+.title-font span{
+    color: #7aceff;
+}
+.title-font p{
+    margin-left: 10px;
+    display: inline-block;
+}
+
+
+/*****回到顶页按钮*****/
+#toTop{
+    width: 60px;
+    height: 0px;
+    position: fixed;
+    right: 30px;
+    bottom: 50px;
+    background: url(../img/toTop.png) left top no-repeat;
+    z-index: 999;
+    cursor: pointer;
+}
+
+
+
+
+

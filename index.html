@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社-主页</title>
+    <link type="text/css" href="css/index.css" rel="stylesheet"/>
+    <script src="js/common.js"></script>        <!--引入通用js-->
+    <script src="js/move.js"></script>          <!--引入移动js-->
+    <script src="js/action.js"></script>
+</head>
+<body>
+    <a id="toTop" onclick="toTop()"></a>
+    <div class="background" >
+        <div id="content" class="content">
+            <nav>
+                <img src="img/logo.png">
+                <ul>
+                    <div id="nav-hover" class="nav-hover" onclick=""></div>
+                    <li class="home"><a href="javascript:;">首&emsp;页</a></li>
+                    <span>l</span>
+                    <li><a href="javascript:;">Java大数据</a></li>
+                    <span>l</span>
+                    <li><a href="javascript:;">JS课程</a></li>
+                    <span>l</span>
+                    <li><a href="javascript:;">HTML5课程</a></li>
+                    <span>l</span>
+                    <li><a href="javascript:;">视频教程</a></li>
+                    <span>l</span>
+                    <li><a href="javascript:;">课程案例</a></li>
+                    <span>l</span>
+                    <li><a href="javascript:;">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="slide">
+            <ins id="prev"></ins>
+            <ins id="prev_action" onmouseover="chanOpa_low(this,1)" onmouseout="chanOpa_low(this,0)"></ins>
+            <ins id="next"></ins>
+            <ins id="next_action" onmouseover="chanOpa_low(this,1)" onmouseout="chanOpa_low(this,0)"></ins>
+            <ul>
+                <li style="opacity: 1"><a href="javascript:;"><img src="img/title1.png" /></a></li>
+                <li><img src="img/title2.png" /></a></li>
+                <li><a href="javascript:;"><img src="img/title3.png" /></a></li>
+                <li><a href="javascript:;"><img src="img/title4.png" /></a></li>
+                <li><a href="javascript:;"><img src="img/title5.png" /></a></li>
+            </ul>
+            <div id="slide_menu">
+                <a>
+                    <img src="img/point1.png">
+                    <img src="img/point2.png">
+                </a>
+                <a>
+                    <img src="img/point1.png">
+                    <img src="img/point2.png" style="opacity: 0">
+                </a>
+                <a>
+                    <img src="img/point1.png">
+                    <img src="img/point2.png" style="opacity: 0">
+                </a>
+                <a>
+                    <img src="img/point1.png">
+                    <img src="img/point2.png" style="opacity: 0">
+                </a>
+                <a>
+                    <img src="img/point1.png">
+                    <img src="img/point2.png" style="opacity: 0">
+                </a>
+            </div>
+        </div >
+        <div class="title">
+            <div class="title-font">
+                <span>热门课程</span>
+                <p>Hot course</p>
+            </div>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/1.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">大数据与机器学习就业班</a></h3>
+                                <h4><a href="javascript:;">大数据、云计算、数据挖掘、机器学习，是时下最稀缺的人才，本课程从零开始带你领略这些前沿技术</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/2.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">JavaEE全栈开发就业班</a></h3>
+                                <h4><a href="javascript:;">企业级开发首选平台，本课程为培养优秀JavaEE开发工程师而生，采用项目式教学，感受最真实的项目体验</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/2.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">大数据与机器学习就业班</a></h3>
+                                <h4><a href="javascript:;">学习，是时下最稀缺的人才，本课程从零开始带你领略这些前沿技术</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/4.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">零基础UI就业班</a></h3>
+                                <h4><a href="javascript:;">从零开始，2个月拥有2年设计师经验，完美应对各类设计需求</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/5.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">颠覆式前端开发</a></h3>
+                                <h4><a href="javascript:;">全面掌握Angular、Vue、React等最新应用框架，融汇实战及项目开发技巧，感受颠覆式前端开发体验</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/6.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">移动端HTML5开发</a></h3>
+                                <h4><a href="javascript:;">理解HTML5移动端开发技术，掌握WebpApp和HybridApp实战开发技巧，感受移动互联网开发之美</a></h4>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/7.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">前端-全栈就业直通车</a></h3>
+                                <h4><a href="javascript:;">从零基础的新人，到成长为一名独当一面的全栈开发工程师，需要多久？在智能社，这个答案是4.5个月</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/8.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">JavaScript核心开发</a></h3>
+                                <h4><a href="javascript:;">所有前端开发者都知道一个道理：JavaScript才是整个前端开发的核心，本课程带你顿悟JavaScript真谛</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/9.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">全栈之道-Node.js开发</a></h3>
+                                <h4><a href="javascript:;">一门课程、一项技术、一片天地，助你从前端开发工程师，升级为一名合格的全栈开发工程师</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/10.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">零基础Web前端开发</a></h3>
+                                <h4><a href="javascript:;">零基础入门，到深入Web前端开发核心，彻底领悟HTML、JavaScript、HTML5技术，成就Web开发中坚力量</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/11.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">前端-全栈开发精英课程</a></h3>
+                                <h4><a href="javascript:;">若对前端开发有所涉猎，本课程就是为你量身定制的：深入JavaScript核心、感受颠覆式前端开发、打通全栈脉络</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBG">
+                        <div>
+                            <img src="img/12.png">
+                            <div class="list-content">
+                                <h3><a href="javascript:;">在线课堂</a></h3>
+                                <h4><a href="javascript:;">任何时间、任何地点，只要你渴望知识，只要你不甘于现状，智能社就会是你的7*24学习伙伴</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="title">
+            <div class="title-font">
+                <span>新闻中心</span>
+                <p>News center</p>
+            </div>
+        </div>
+        <div class="news">
+            <div class="news1">
+                <div class="news-list">
+                    <span><a href="javascript:;">java及大数据免费班招生啦！</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">北京亦庄前端人才双选会举行通知</a></span>
+                    <span class="new-date">2016-11-2</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">智能社明星学员教你快速进入学习状态！（2016.07.04班）</a></span>
+                    <span class="new-date">2016-11-11</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">双十一报名，送Nodejs课程！</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">Node.JS-经典教程</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">更多内容尽在-Vue.JS直播精讲！</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">智能社来甘肃中医药大学啦！</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+            </div>
+            <div class="news2">
+                <div class="news-list">
+                    <span><a href="javascript:;">智能社-Javascript之D3.js教程</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">智能社明星学员教你快速进入学习状态！（2016.07.18班）</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">大神周末晋修班开课咯（大神讲师+精英课程）</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">智能社来大连东软信息学院工作坊啦！</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">辽宁理工职业学院领导莅临智能社考察</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">智能社---详解NodeJS中的包管理</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+                <div class="news-list">
+                    <span><a href="javascript:;">深圳公开课即将开讲！</a></span>
+                    <span class="new-date">2017-01-19</span>
+                </div>
+            </div>
+        </div>
+        <div class="clock-3D">
+
+        </div>
+        <div class="consult" id="consult">
+            <div class="consult-close" onclick="onConsult(this)"></div>
+            <div class="consult-head">
+                <div></div>
+                <ins></ins>
+            </div>
+            <div class="consult-body">
+                <div class="group-def">
+                    <ins></ins>
+                    <span>默认分组</span>
+                </div>
+                <div  class="group-bj">
+                    <ins></ins>
+                    <span>北京</span>
+                </div>
+                <div  class="group-sh">
+                    <ins></ins>
+                    <span>上海</span>
+                </div>
+            </div>
+        </div>
+        <!--留言-->
+        <div class="bbs" id="bbs">
+            <div class="bss-head">
+                <div class="head-font">
+                    <p>请您留言</p>
+                    <span onclick="onBbs(this)">+</span>
+                </div>
+            </div>
+            <div class="bss-main">
+                <form class="message">
+                    <textarea placeholder="请在此输入留言内容，我们会尽快与您联系! ( 必填 )"></textarea>
+                    <div class="name">
+                        <ins></ins>
+                        <input type="text" placeholder="姓名">
+                    </div>
+                    <div class="tel">
+                        <ins></ins>
+                        <input type="tel" placeholder="电话(必填)">
+                    </div>
+                    <div class="address">
+                        <ins></ins>
+                        <input type="text" placeholder="地址">
+                    </div>
+                    <div class="email">
+                    <ins></ins>
+                    <input type="email" placeholder="邮箱">
+                    </div>
+                    <input type="button" class="submit" value="提交">
+                </form>
+                <div class="mess-foot">
+                    <a href="http://www.marchsoft.cn/">
+                        <ins></ins>
+                        <span>咨询软件由三月提供</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

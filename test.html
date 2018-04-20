@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <title>Title</title>
+    <style>
+        *{margin:0; padding:0; list-style:none;}
+        ul{background:#ccc; width:574px; margin:100px auto; position:relative;}
+        ul li{ float:left; width:80px; height:40px; text-align:center; line-height:40px; border:1px solid #000; position:relative; z-index:2;}
+        #block_box{ position:absolute; top:0; left:0; background:#399; z-index:1;}
+    </style>
+    <script>
+        var left = 0;
+        var iSpeed = 0;
+        function move(obj,iTarget){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                iSpeed+=(iTarget-left)/5;
+                iSpeed*=0.75;
+                left+=iSpeed;
+                obj.style.left = left+'px';
+                if(Math.round(iSpeed)==0&&Math.round(left)==iTarget){
+                    clearInterval(obj.timer);
+                }
+            },30);
+        }
+        window.onload = function(){
+            var aLi = document.getElementsByTagName('li');
+            var oBlock = document.getElementById('block_box');
+            var iNow = 0;
+            for(var i=0;i<aLi.length-1;i++){
+                (function(index){
+                    aLi[i].onmouseover = function(){
+                        // oBlock.style.left = index*aLi[0].offsetWidth+'px';
+                        move(oBlock,index*aLi[0].offsetWidth);
+                    };
+                    aLi[i].onmouseout = function(){
+                        // oBlock.style.left = 0;
+                        move(oBlock,iNow*aLi[0].offsetWidth);
+                    };
+                    aLi[i].onclick = function(){
+                        iNow=index;
+                    };
+                })(i);
+            }
+        };
+    </script>
+</head>
+<body>
+<ul>
+     <li>首页</li>
+     <li>CSS课程</li>
+     <li>JS课程</li>
+     <li>HTML5课程</li>
+     <li>视频教程</li>
+     <li>课程案例</li>
+     <li>联系方式</li>
+     <li id="block_box"></li>
+</ul>
+</body>
+</html>
