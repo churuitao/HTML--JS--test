@@ -1,0 +1,337 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    list-style: none;
+}
+html{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+h3,h4{
+    margin-top: 12px;
+    font-weight:normal;
+    text-align: left;
+}
+h3{
+    color: #fff;
+    font-size: 14px;
+}
+h4{
+    font-size: 12px;
+    line-height: 18px;
+}
+/*设置背景图片*/
+body{
+    background: #03030d;
+}
+/*****导航栏+LOGO*****/
+
+/*单独设置主页按钮的left值*/
+.home{
+    margin-left: 25px;
+}
+.content{
+    width: 1000px;
+    height: 100px;
+    margin: 0 auto;
+}
+nav img{
+    float: left;
+    margin: 10px 20px;
+}
+nav ul{
+    width: 730px;
+    height: 80px;
+    margin-top: 20px;
+    float: right;
+    position: relative;
+    background: url(../img/nav_bg.png) left top no-repeat;
+    z-index: 2;
+}
+nav ul li{
+    display: inline-block;
+    width: 85px;
+    height: 80px;
+}
+/*设置导航栏文字*/
+nav ul li a{
+    display:inherit;
+    line-height: 70px;
+    width: 85px;
+    height: 80px;
+    text-shadow: 1px 1px 1px black;
+    font-size: 14px;
+    transition: 0.4s all ease;
+}
+nav ul li a:hover{
+    color: #63b1ff;
+}
+/*导航栏按钮背景效果*/
+.nav-hover{
+    width: 98px;
+    height: 78px;
+    background: url("../img/nav_hover.png");
+    position: absolute;
+    top: -2px;
+    left: 32px;
+    z-index: -1;
+}
+.active{
+    color: #63b1ff;
+}
+
+/***页脚***/
+footer{
+    width: 1000px;
+    height: 80px;
+    margin: 10px auto;
+}
+footer p{
+    padding: 5px 0;
+    font-size: 12px;
+    color: #999;
+}
+footer a{
+    color: #999;
+}
+footer a:hover{
+    color: #eee;
+}
+
+
+/****留言板*****/
+.bbs{
+    position: fixed;
+    left: 0;
+    bottom: -365px;
+    width: 250px;
+    height: 400px;
+    z-index: 999999;
+}
+.bss-head{
+    width: 100%;
+    height: 35px;
+    position: relative;
+    background-color: #2b7cfa;
+    border-radius: 5px 5px 0 0;
+}
+.head-font{
+    position: absolute;
+    top: 6px;
+    left: 5%;
+    width: 90%;
+}
+.head-font p{float: left;}
+.head-font span{
+    width:20px ;
+    height: 20px;
+    float: right;
+    font-size: 26px;
+    margin-top: -8px;
+    cursor: pointer;
+}
+.bss-main{
+    width: 100%;
+    height: 360px;
+    background: white;
+}
+.message{
+    width: 240px;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+.message textarea{
+    width: 225px;
+    height: 92px;
+    resize: none;
+    padding: 4px;
+    text-align: left;
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow: auto;
+    color: black;
+    outline: 0;
+}
+.name,.tel,.address,.email,
+.uname,.upass,.uemail,.utel{
+    width: 235px;
+    height: 35px;
+    margin: 5px auto;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+.name ins,.tel ins,.address ins,.email ins,
+.uname ins,.upass ins,.utel ins,.uemail ins{
+    display: block;
+    float: left;
+    width: 12px;
+    height: 20px;
+    margin: 9px 0px 0px 10px;
+    background: url("../img/mess.png");
+}
+.name ins{background-position:48px 0;}
+.tel ins{background-position:15px 0;}
+.address ins{background-position:0 0;}
+.email ins{background-position:82px 0;}
+.name input,.tel input,.address input,.email input,
+.uname input,.upass input,.uemail input,.utel input,.ucode input{
+    margin: 10px -15px 0 0;
+    text-align: left;
+    font-size: 12px;
+    width: 197px;
+    border: none;
+    height: 15px;
+    color: black;
+    outline: 0;
+}
+.submit{
+    width: 235px;
+    line-height: 32px;
+    border-radius: 6px;
+    color: #2b7cfa;
+    background: #FFFFFF;
+    border: 1px solid #2b7cfa;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+    outline: 0;
+}
+.submit:hover{
+    color:#fff;
+    background-color:#2b7cfa;
+    border-color:#2b7cfa;
+}
+.mess-foot{
+    font-size: 12px;
+    padding-top: 6px;
+    margin-top: 5px;
+    border-top: 1px solid #ccc;
+}
+.mess-foot ins{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("../img/ice.png") -2px -121px;
+    background-size: 56px auto;
+}
+.mess-foot span{
+    color: #bdbdbd;
+    display: inline-block;
+    position: relative;
+    top: -3px;
+}
+
+
+/*****咨询****/
+.consult{
+    height: 150px;
+    width: 125px;
+    position: absolute;
+    top: 38%;
+    right: -125px;
+    background: #3290cd;
+}
+.consult-close{
+    width: 25px;
+    height: 66px;
+    background:url("../img/icon_close.png") no-repeat;
+    position: relative;
+    left: -25px;
+    top: 40px;
+    cursor: pointer;
+}
+.consult-head {
+    position: absolute;
+    top: 0;
+    width: 125px;
+    height: 70px;
+    background: url(../img/consult_BG.jpg) no-repeat;
+    background-size: 125px auto;
+    overflow: hidden;
+    display: block;
+}
+.consult-head ins{
+    background: url(../img/online.png) no-repeat;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 90px;
+    height: 30px;
+    overflow: hidden;
+    z-index: 15;
+}
+.consult-head div{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(50,144,205,0), #3290cd);
+}
+.consult-body{
+    width: 100%;
+    height: 85px;
+}
+.group-def,.group-bj,.group-sh{
+    width: 115px;
+    height: 20px;
+    background: #f7bd84;
+    margin: 6px auto;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 12px;
+    color: #bd4b13;
+    cursor: pointer;
+}
+.group-def ins,.group-bj ins,.group-sh ins{
+    width: 18px;
+    height: 18px;
+    background: url(../img/icon.png) -420px -20px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 7px;
+}
+.group-def span,.group-bj span,.group-sh span{font-size: 12px; color: #bd4b13;font-weight: bold}
+
+
+
+
+/****小标题****/
+.title{
+    width: 1013px;
+    height: 50px;
+    background: url(../img/hotclassBG.png) no-repeat;
+    margin: 10px auto;
+}
+.title-font{
+    text-align: left;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 30px;
+}
+.title-font span{
+    color: #7aceff;
+}
+.title-font p{
+    margin-left: 10px;
+    display: inline-block;
+}
+
+
+/*****回到顶页按钮*****/
+#toTop{
+    width: 60px;
+    height: 0px;
+    position: fixed;
+    right: 30px;
+    bottom: 50px;
+    background: url(../img/toTop.png) left top no-repeat;
+    z-index: 999;
+    cursor: pointer;
+}
