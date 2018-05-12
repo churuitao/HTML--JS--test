@@ -95,10 +95,10 @@ function loginMove(obj,attr,speed) {
 
 //显示返回顶部按钮
 function showToTop(obj) {
-    bufferMove(obj,'height',60);
+    bufferMove(obj,'opacity',100);
 }
 function hiddenToTop(obj) {
-    bufferMove(obj,'height',0);
+    bufferMove(obj,'opacity',0);
 }
 
 
@@ -114,33 +114,33 @@ function toTop() {
         }
     },10);
 }
-//拖拽用户信息框
-function onload_userinfomove (){
-    var userinfo=document.getElementById('userinfo');
+//拖拽任意框信息框
+function oDivmove (div){
+    var oDiv=document.getElementById(div);
     var disX=0;
     var disY=0;
-    userinfo.onmousedown=function (ev){
+    oDiv.onmousedown=function (ev){
         var oEvent=ev||event;
-        disX=oEvent.clientX-userinfo.offsetLeft;
-        disY=oEvent.clientY-userinfo.offsetTop;
+        disX=oEvent.clientX-oDiv.offsetLeft;
+        disY=oEvent.clientY-oDiv.offsetTop;
         document.onmousemove=function (ev){
             var oEvent=ev||event;
             var left=oEvent.clientX-disX;
             var top=oEvent.clientY-disY;
             if(left<0){
                 left=0;
-            }else if(left>document.body.offsetWidth-userinfo.offsetWidth) {
-                left=document.body.offsetWidth-userinfo.offsetWidth;
+            }else if(left>document.body.offsetWidth-oDiv.offsetWidth) {
+                left=document.body.offsetWidth-oDiv.offsetWidth;
             }
             if(top<0)
             {
                 top=0;
             }
-            else if(top>document.body.offsetHeight-userinfo.offsetHeight){
-                top=document.body.offsetHeight-userinfo.offsetHeight
+            else if(top>window.screen.availHeight-oDiv.offsetHeight){
+                top=window.screen.availHeight-oDiv.offsetHeight
             }
-            userinfo.style.left=left+'px';
-            userinfo.style.top=top+'px';
+            oDiv.style.left=left+'px';
+            oDiv.style.top=top+'px';
         };
         //鼠标松开事件结束
         document.onmouseup=function (){
@@ -149,5 +149,48 @@ function onload_userinfomove (){
         };
         return false;           //阻止firefox的BUG
     };
+};
+
+//bss
+function bbsmove (sign){
+    var bbs=document.getElementById('bbs');
+    var bbshead = document.getElementById('bbs-head');
+    var disX=0;
+    var disY=0;
+    if(sign==false){
+        bbshead.onmousedown=null;
+        return;
+    }else{
+        bbshead.onmousedown=function (ev){
+            var oEvent=ev||event;
+            disX=oEvent.clientX-bbs.offsetLeft;
+            disY=oEvent.clientY-bbs.offsetTop;
+            document.onmousemove=function (ev){
+                var oEvent=ev||event;
+                var left=oEvent.clientX-disX;
+                var top=oEvent.clientY-disY;
+                if(left<0){
+                    left=0;
+                }else if(left>document.body.offsetWidth-bbs.offsetWidth) {
+                    left=document.body.offsetWidth-bbs.offsetWidth;
+                }
+                if(top<0)
+                {
+                    top=0;
+                }
+                else if(top>window.screen.availHeight-bbs.offsetHeight){
+                    top=window.screen.availHeight-bbs.offsetHeight
+                }
+                bbs.style.left=left+'px'; 
+                bbs.style.top=top+'px';
+            };
+            //鼠标松开事件结束
+            document.onmouseup=function (){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            };
+            return false;           //阻止firefox的BUG
+        };
+    }
 };
 
