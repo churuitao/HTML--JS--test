@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ZH">
 <head>
     <meta charset="UTF-8">
     <title>智能社-主页</title>
@@ -14,8 +14,6 @@
     <script src="js/login.js"></script>
 </head>
 <body>
-    <a id="user"  onclick="showLogin()"></a>
-    <a id="loginuser"  onclick="showInfo()"></a>
     <div id="userinfo">
         <p>用户信息</p>
         <a class="info-close" onclick="hiddenInfo()"></a>
@@ -89,8 +87,11 @@
         </div>
     </div>
     <a id="toTop" onclick="toTop()" onmouseover="toTopHover()" onmouseout="toTophide()"></a>
-    <div class="background" >
+    <div class="content-main">
+    <div class="background" ></div>
         <div id="content" class="content">
+            <a id="user"  onclick="showLogin()"></a>
+            <a id="loginuser"  onclick="showInfo()"></a>
             <nav>
                 <img src="img/logo.png">
                 <ul>
@@ -552,15 +553,15 @@
                 <ins></ins>
             </div>
             <div class="consult-body">
-                <div class="group-def">
+                <div class="group-def" onclick="showBbs()">
                     <ins></ins>
                     <span>默认分组</span>
                 </div>
-                <div  class="group-bj">
+                <div  class="group-bj" onclick="showBbs()">
                     <ins></ins>
                     <span>北京</span>
                 </div>
-                <div  class="group-sh">
+                <div  class="group-sh" onclick="showBbs()">
                     <ins></ins>
                     <span>上海</span>
                 </div>
@@ -568,10 +569,11 @@
         </div>
         <!--留言-->
         <div class="bbs" id="bbs">
-            <div class="bss-head">
+            <div class="bss-head" id="bbs-head">
                 <div class="head-font">
                     <p>请您留言</p>
-                    <span onclick="onBbs(this)">+</span>
+                    <span class='bbsclose1' onclick="onBbs(this)">+</span>
+                    <span class='bbsclose2' onclick="hiddrnBbs()"></span>
                 </div>
             </div>
             <div class="bss-main">
