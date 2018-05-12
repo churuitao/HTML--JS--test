@@ -76,10 +76,11 @@ function onload_slide() {
 
 // 显示/隐藏留言面板
 var isBbs=false;
-function onBbs(sign) {
+function onBbs() {
     var bbs = document.getElementById('bbs');
+    var sign = bbs.getElementsByTagName('span')[0];
     if(isBbs){
-        bufferMove(bbs,'bottom',-363);
+        bufferMove(bbs,'bottom',-365);
         sign.innerHTML = '+';
         isBbs = false;
     } else{
@@ -99,18 +100,47 @@ function onConsult(sign) {
         isConsult = false;
     } else{
         bufferMove(consult,'right',0);
-        sign.style.backgroundPositionX =-120+'px';
+        sign.style.backgroundPositionX = -120+'px';
         isConsult=true;
     }
 }
 
+//显示咨询面板
+function showBbs(){
+    var bbs = document.getElementById('bbs');
+    var span = bbs.getElementsByTagName('span');4
+    console.log(document.body.clientHeight/2);
+    setStyle(bbs,'top','auto');
+    setStyle(bbs,'bottom',window.screen.availHeight /2-parseInt(getStyle(bbs,'height'))/2+'px');
+    setStyle(bbs,'left',document.body.offsetWidth/2-parseInt(getStyle(bbs,'width'))/2+'px');
+    setStyle(span[0],'display','none');
+    setStyle(span[1],'display','inline');
+    bbsmove(true);
+}
+//隐藏咨询面板
+function hiddrnBbs(){
+    var bbs = document.getElementById('bbs');
+    var span = bbs.getElementsByTagName('span');
+    setStyle(bbs,'top','auto');                     //取消top的
+    setStyle(bbs,'bottom',-365+'px');
+    setStyle(bbs,'left',0+'px');
+    setStyle(span[0],'display','inline');
+    setStyle(span[1],'display','none');
+
+    var bbs = document.getElementById('bbs');
+    var sign = bbs.getElementsByTagName('span')[0]; 
+    bufferMove(bbs,'bottom',-365);
+    sign.innerHTML = '+';
+    isBbs = false;
+    bbsmove(false);
+}
+
 //自动切换页面（轮播图）
-// var auto_timer=null;
+var auto_timer=null;
 function onload_automatic() {
     var slide= document.getElementById('slide');
     var oUl = slide.getElementsByTagName('ul')[0];
     var oLi = oUl.getElementsByTagName('li');
-
     var slide_menu = document.getElementById('slide_menu');
     var oBut = slide_menu.getElementsByTagName('a');
     var oImg = slide_menu.getElementsByTagName('img');
@@ -282,6 +312,7 @@ function clickRegister() {
         setStyle(upass,'border','1px solid rgb(255, 0, 0)');
         setStyle(upass1,'border','1px solid rgb(255, 0, 0)');
         alert('两次输入密码不一致!');
+        return;
     }
     var info={
         "phone":input[2].value,
@@ -345,7 +376,7 @@ function showInfo() {
         var span = info.getElementsByTagName('span');
         var userinfo = JSON.parse(localStorage.getItem(userName));
         setStyle(info, 'display', 'block');
-        setStyle(info, 'top', getScrollTop() + parseInt(document.body.offsetHeight / 2 - parseInt(getStyle(info, 'height')) / 2) + 'px');
+        setStyle(info, 'top', getScrollTop() + window.screen.availHeight / 2 - parseInt(getStyle(info, 'height')) / 2 + 'px');
         setStyle(info, 'left', parseInt(document.body.offsetWidth / 2 - parseInt(getStyle(info, 'width')) / 2) + 'px');
         span[0].innerHTML='用户名：'+userName;
         span[1].innerHTML='邮&emsp;箱：'+userinfo.email;
@@ -373,22 +404,19 @@ function exitLogin() {
         alert("系统刚刚走神了，即将刷新页面");
         location.reload([false]);  //强制刷新当前页面，false 从缓存读取  true  从服务器读取
     }else{
-        if(confirm('确定要退出登陆吗?')){
-            var userinfo = JSON.parse(localStorage.getItem(userName));
-            var infotemp={
-                "phone":userinfo.phone,
-                "email":userinfo.email,
-                "pass": userinfo.pass,
-                "static":false
-            }
-            setStyle(document.getElementById('userinfo'),'display','none');
-            localStorage.setItem(userName,JSON.stringify(infotemp));
-            userName='';
-            setStyle(document.getElementById('user'),'display','block');
-            setStyle(document.getElementById('loginuser'),'display','none');
-            alert("退出登陆成功！");
+        var userinfo = JSON.parse(localStorage.getItem(userName));
+        var infotemp={
+            "phone":userinfo.phone,
+            "email":userinfo.email,
+            "pass": userinfo.pass,
+            "static":false
         }
-        return false;
+        setStyle(document.getElementById('userinfo'),'display','none');
+        localStorage.setItem(userName,JSON.stringify(infotemp));
+        userName='';
+        setStyle(document.getElementById('user'),'display','block');
+        setStyle(document.getElementById('loginuser'),'display','none');
+        alert("退出登陆成功！");
     }
 }
 
