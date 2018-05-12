@@ -17,7 +17,7 @@
 .pw-strength {margin:0 auto;width: 180px;position: relative}
 .pw-bar{background: url(../img/pwd-1.png) no-repeat;height: 14px;overflow: hidden;width: 179px;}
 .pw-bar-on{
-    background:  url(../img/pwd-2.png) no-repeat;
+    background:  url(../img/pwd-2.png) no-repaeat;
     width:0px; height:14px;
     position: absolute;
     top: 0px;
@@ -32,17 +32,25 @@
 .pw-strong .pw-bar-on {width: 179px;}
 .pw-txt {padding-top: 2px;width: 180px;overflow: hidden;}
 .pw-txt span {color: #707070;float: left;font-size: 12px;text-align: center;width: 58px;}
-
+.content-main{
+    width: 1519px;
+    margin:0 auto;
+    position: relative;
+}
 .background{
     height: 781px;
     background: url("../img/bg2.jpg") no-repeat center;
-    margin: 0 auto;
+    width: 1519px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 /****用户*****/
 #user,#loginuser{
     position: absolute;
     top: 40px;
-    left: 230px;
+    left: -30px;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -58,7 +66,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
-    z-index: 99999999;
+    z-index: 9999;
     display: none;
     align-items: center;
     justify-content: center;
@@ -68,7 +76,7 @@
     height: 300px;
     width: 350px;
     background: url("../img/loginbg1.jpg") no-repeat;
-    z-index: 999999999;
+    z-index: 9999;
     box-shadow: 0 2px 5px rgba(0,0,0,.3);
     border-radius: 4px;
     overflow: hidden;
@@ -84,7 +92,7 @@
 .upass ins{background-position:-34px 0;}
 .utel ins{background-position:15px 0;}
 .uemail ins{background-position:82px 0;}
-.uname input,.upass input,.email input,
+.uname input,.upass input,
 .utel input,.uemail input,.ucode input{
     margin: 5px -5px 0 0;
     background-color:rgba(0,0,0,0);
@@ -445,3 +453,4 @@ h4>a{
 }
 /*设置为默认*/
 .server-product-index{width: 270px;}
+
