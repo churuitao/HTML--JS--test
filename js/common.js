@@ -159,7 +159,7 @@ window.onload=function () {
     onload_clock();
     onload_product();
     onload_meteor();
-    onload_userinfomove();
+    oDivmove('userinfo');
     //阻止默认冒泡事件
     var login =document.getElementById('login-main');
     login.onclick=function (ev) {
@@ -169,12 +169,12 @@ window.onload=function () {
         else
             oEvent.stopPropagation();
     }
+    var consult = document.getElementById('consult');
+    setStyle(consult,'top',document.body.offsetHeight+parseInt(getStyle(consult,'height')));
 }
 
 window.onscroll = function () {
     var totop=document.getElementById('toTop');
-    var consult=document.getElementById('consult');
-    bufferMove(consult,'top',Math.round(document.documentElement.clientHeight/2-(parseInt( getStyle(consult,'height'))/2)+getScrollTop()));
     if(getScrollTop()>150){
         showToTop(totop);
     }else{
