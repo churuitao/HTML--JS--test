@@ -1,629 +1,658 @@
 <!DOCTYPE html>
 <html lang="ZH">
-<head>
-    <meta charset="UTF-8">
-    <title>智能社-主页</title>
-    <link type="text/css" href="css/common.css" rel="stylesheet"/>
-    <link type="text/css" href="css/index.css" rel="stylesheet"/>
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/MD5.js"></script>
-    <script src="js/common.js"></script>        <!--引入通用js-->
-    <script src="js/move.js"></script>          <!--引入移动js-->
-    <script src="js/action.js"></script>
-    <script src="js/3D_clock.js"></script>
-    <script src="js/login.js"></script>
-</head>
-<body>
-    <div id="userinfo">
-        <p>用户信息</p>
-        <a class="info-close" onclick="hiddenInfo()"></a>
-        <div class="info">
-            <span>用户名：</span>
-        </div>
-        <div class="info">
-            <span>邮&emsp;箱：</span>
-        </div>
-        <div class="info">
-            <span>手机号：</span>
-        </div>
-        <button type='button' onclick="changePass()" >更改密码</button>
-        <button type='button' onclick="exitLogin()">退出登陆</button>
-    </div>
-    <div id="login" onclick="hiddenLogin()">
-        <div class="login-main" id="login-main">
-            <p>登陆</p>
-            <form id="login-login">
-                <div class="uname" id="loginname">
-                    <ins></ins>
-                    <input type="text" placeholder="用户名" name="username" form="login-login" autocomplete="off">
-                </div>
-                <div class="upass" id="loginpass">
-                    <ins></ins>
-                    <input type="password" placeholder="密码" name="password" form="login-login">
-                </div>
-                <button type='button' onclick="user_login()">登陆</button>
-                <!--<button type="submit" form="login-form" formaction="" formmethod="post">提交</button>-->
-                <button type='button' onclick="registerMove()">注册</button>
-            </form>
-            <form id="login-register">
-                <div class="uname" id="uname">
-                    <ins></ins>
-                    <input type="text" placeholder="用户名" name="username" form="login-register" autocomplete="off">
-                </div>
-                <div class="uemail" id="uemail">
-                    <ins></ins>
-                    <input type="email" placeholder="邮箱" name="email" form="login-register"  autocomplete="off">
-                </div>
-                <div class="utel" id="utel">
-                    <ins></ins>
-                    <input type="tel" placeholder="电话" autocomplete="off">
-                </div>
-                <div class="upass" id="upass">
-                    <ins></ins>
-                    <input type="password" placeholder="密码" name="password" form="login-register">
-                </div>
-                <div id="level" class="pw-strength">
-                    <div class="pw-bar"></div>
-                    <div class="pw-bar-on" id="pw-bar-on"></div>
-                    <div class="pw-txt">
-                    <span>弱</span>
-                    <span>中</span>
-                    <span>强</span>
-                    </div>
-                </div>
-                <div class="upass" id="upass1">
-                    <ins></ins>
-                    <input type="password" placeholder="确认密码" name="password" form="login-register">
-                </div>
-                <div class="ucode" id="ucode">
-                    <input type="text" placeholder="验证码">
-                    <i onclick="changeCode()"></i>
-                    <span onclick="changeCode()">换一张</span>
-                </div>
-                <button type='button' id="register" onclick="clickRegister()" >注册</button>
-                <!--<button type="submit" form="login-form" formaction="" formmethod="post">提交</button>-->
-                <button type='button' onclick="registerMove()">返回</button>
-            </form>
-        </div>
-    </div>
-    <a id="toTop" onclick="toTop()" onmouseover="toTopHover()" onmouseout="toTophide()"></a>
-    <div class="content-main">
-    <div class="background" ></div>
-        <div id="content" class="content">
-            <a id="user"  onclick="showLogin()"></a>
-            <a id="loginuser"  onclick="showInfo()"></a>
-            <nav>
-                <img src="img/logo.png">
-                <ul>
-                    <div id="nav-hover" class="nav-hover" onclick=""></div>
-                    <li class="home"><a href="javascript:;" class="active">首&emsp;页</a></li>
-                    <span>l</span>
-                    <li><a href="javascript:;">Java大数据</a></li>
-                    <span>l</span>
-                    <li><a href="javascript:;">JS课程</a></li>
-                    <span>l</span>
-                    <li><a href="javascript:;">HTML5课程</a></li>
-                    <span>l</span>
-                    <li><a href="javascript:;">视频教程</a></li>
-                    <span>l</span>
-                    <li><a href="html/waterfall.html">课程案例</a></li>
-                    <span>l</span>
-                    <li><a href="javascript:;">联系方式</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div id="slide">
-            <ins id="prev"></ins>
-            <ins id="prev_action" onmouseover="chanOpa_low(this,1)" onmouseout="chanOpa_low(this,0)"></ins>
-            <ins id="next"></ins>
-            <ins id="next_action" onmouseover="chanOpa_low(this,1)" onmouseout="chanOpa_low(this,0)"></ins>
-            <ul>
-                <li style="opacity: 1"><a href="javascript:;"><img src="img/title1.png" /></a></li>
-                <li><a href="javascript:;"><img src="img/title2.png" /></a></li>
-                <li><a href="javascript:;"><img src="img/title3.png" /></a></li>
-                <li><a href="javascript:;"><img src="img/title4.png" /></a></li>
-                <li><a href="javascript:;"><img src="img/title5.png" /></a></li>
-            </ul>
-            <div id="slide_menu">
-                <a>
-                    <img src="img/point1.png">
-                    <img src="img/point2.png">
-                </a>
-                <a>
-                    <img src="img/point1.png">
-                    <img src="img/point2.png" style="opacity: 0">
-                </a>
-                <a>
-                    <img src="img/point1.png">
-                    <img src="img/point2.png" style="opacity: 0">
-                </a>
-                <a>
-                    <img src="img/point1.png">
-                    <img src="img/point2.png" style="opacity: 0">
-                </a>
-                <a>
-                    <img src="img/point1.png">
-                    <img src="img/point2.png" style="opacity: 0">
-                </a>
-            </div>
-        </div >
-        <div class="title">
-            <div class="title-font">
-                <span>热门课程</span>
-                <p>Hot course</p>
-            </div>
-        </div>
-        <div class="list">
-            <ul>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/1.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">大数据与机器学习就业班</a></h3>
-                                <h4><a href="javascript:;">大数据、云计算、数据挖掘、机器学习，是时下最稀缺的人才，本课程从零开始带你领略这些前沿技术</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/2.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">JavaEE全栈开发就业班</a></h3>
-                                <h4><a href="javascript:;">企业级开发首选平台，本课程为培养优秀JavaEE开发工程师而生，采用项目式教学，感受最真实的项目体验</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/2.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">大数据与机器学习就业班</a></h3>
-                                <h4><a href="javascript:;">学习，是时下最稀缺的人才，本课程从零开始带你领略这些前沿技术</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/4.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">零基础UI就业班</a></h3>
-                                <h4><a href="javascript:;">从零开始，2个月拥有2年设计师经验，完美应对各类设计需求</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/5.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">颠覆式前端开发</a></h3>
-                                <h4><a href="javascript:;">全面掌握Angular、Vue、React等最新应用框架，融汇实战及项目开发技巧，感受颠覆式前端开发体验</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/6.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">移动端HTML5开发</a></h3>
-                                <h4><a href="javascript:;">理解HTML5移动端开发技术，掌握WebpApp和HybridApp实战开发技巧，感受移动互联网开发之美</a></h4>
-                        </div>
-                    </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/7.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">前端-全栈就业直通车</a></h3>
-                                <h4><a href="javascript:;">从零基础的新人，到成长为一名独当一面的全栈开发工程师，需要多久？在智能社，这个答案是4.5个月</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/8.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">JavaScript核心开发</a></h3>
-                                <h4><a href="javascript:;">所有前端开发者都知道一个道理：JavaScript才是整个前端开发的核心，本课程带你顿悟JavaScript真谛</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/9.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">全栈之道-Node.js开发</a></h3>
-                                <h4><a href="javascript:;">一门课程、一项技术、一片天地，助你从前端开发工程师，升级为一名合格的全栈开发工程师</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/10.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">零基础Web前端开发</a></h3>
-                                <h4><a href="javascript:;">零基础入门，到深入Web前端开发核心，彻底领悟HTML、JavaScript、HTML5技术，成就Web开发中坚力量</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/11.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">前端-全栈开发精英课程</a></h3>
-                                <h4><a href="javascript:;">若对前端开发有所涉猎，本课程就是为你量身定制的：深入JavaScript核心、感受颠覆式前端开发、打通全栈脉络</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="listBG">
-                        <div>
-                            <img src="img/12.png">
-                            <div class="list-content">
-                                <h3><a href="javascript:;">在线课堂</a></h3>
-                                <h4><a href="javascript:;">任何时间、任何地点，只要你渴望知识，只要你不甘于现状，智能社就会是你的7*24学习伙伴</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="title">
-            <div class="title-font">
-                <span>新闻中心</span>
-                <p>News center</p>
-            </div>
-        </div>
-        <div class="news">
-            <div class="news1">
-                <div class="news-list">
-                    <span><a href="javascript:;">java及大数据免费班招生啦！</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">北京亦庄前端人才双选会举行通知</a></span>
-                    <span class="new-date">2016-11-02</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">智能社明星学员教你快速进入学习状态！（2016.07.04班）</a></span>
-                    <span class="new-date">2016-11-11</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">双十一报名，送Nodejs课程！</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">Node.JS-经典教程</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">更多内容尽在-Vue.JS直播精讲！</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">智能社来甘肃中医药大学啦！</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-            </div>
-            <div class="news2">
-                <div class="news-list">
-                    <span><a href="javascript:;">智能社-Javascript之D3.js教程</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">智能社明星学员教你快速进入学习状态！（2016.07.18班）</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">大神周末晋修班开课咯（大神讲师+精英课程）</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">智能社来大连东软信息学院工作坊啦！</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">辽宁理工职业学院领导莅临智能社考察</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">智能社---详解NodeJS中的包管理</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-                <div class="news-list">
-                    <span><a href="javascript:;">深圳公开课即将开讲！</a></span>
-                    <span class="new-date">2017-01-19</span>
-                </div>
-            </div>
-        </div>
-        <div id="clock-3D">
-            <ul class="clock-hour1">
-                <li class="clock-top"><span>0</span></li>
-                <li class="clock-button"><span>0</span></li>
-                <li class="clock-right"><span>0</span></li>
-                <li class="clock-left"><span>0</span></li>
-                <li class="clock-after"><span>0</span></li>
-                <li class="clock-front"><span>0</span></li>
-            </ul>
-            <ul class="clock-hour2">
-                <li class="clock-top"><span>0</span></li>
-                <li class="clock-button"><span>0</span></li>
-                <li class="clock-right"><span>0</span></li>
-                <li class="clock-left"><span>0</span></li>
-                <li class="clock-after"><span>0</span></li>
-                <li class="clock-front"><span>0</span></li>
-            </ul>
-            <span class="split"></span>
-            <ul class="clock-min1">
-                <li class="clock-top"><span>0</span></li>
-                <li class="clock-button"><span>0</span></li>
-                <li class="clock-right"><span>0</span></li>
-                <li class="clock-left"><span>0</span></li>
-                <li class="clock-after"><span>0</span></li>
-                <li class="clock-front"><span>0</span></li>
-            </ul>
-            <ul class="clock-min2">
-                <li class="clock-top"><span>0</span></li>
-                <li class="clock-button"><span>0</span></li>
-                <li class="clock-right"><span>0</span></li>
-                <li class="clock-left"><span>0</span></li>
-                <li class="clock-after"><span>0</span></li>
-                <li class="clock-front"><span>0</span></li>
-            </ul>
-            <span class="split"></span>
-            <ul class="clock-sec1">
-                <li class="clock-top"><span>0</span></li>
-                <li class="clock-button"><span>0</span></li>
-                <li class="clock-right"><span>0</span></li>
-                <li class="clock-left"><span>0</span></li>
-                <li class="clock-after"><span>0</span></li>
-                <li class="clock-front"><span>0</span></li>
-            </ul>
-            <ul class="clock-sec2">
-                <li class="clock-top"><span>0</span></li>
-                <li class="clock-button"><span>0</span></li>
-                <li class="clock-right"><span>0</span></li>
-                <li class="clock-left"><span>0</span></li>
-                <li class="clock-after"><span>0</span></li>
-                <li class="clock-front"><span>0</span></li>
-            </ul>
-        </div>
-        <div class="title">
-            <div class="title-font">
-                <span>3D魔方</span>
-                <p>3D magic</p>
-            </div>
-        </div>
-        <div class="magicCube">
-            <div class="wrap">
-                <div class="out-front"></div>
-                <div class="out-back"></div>
-                <div class="out-left"></div>
-                <div class="out-right"></div>
-                <div class="out-top"></div>
-                <div class="out-bottom"></div>
 
-                <span class="in-front"></span>
-                <span class="in-back"></span>
-                <span class="in-left"></span>
-                <span class="in-right"></span>
-                <span class="in-top"></span>
-                <span class="in-bottom"></span>
-            </div>
-        </div>
-        <div class="title">
-            <div class="title-font">
-                <span>服务产品</span>
-                <p>Service products</p>
-            </div>
-        </div>
-        <ul id="product">
-            <li class="server-product server-product-index" style="background: url('img/producet_bg_1.jpg')">
-                <div class="product-title">
-                    <img src="img/product_header_active_icon_01.png">
-                    <h2>云服务器</h2>
-                    <p>极速稳定计算服务</p>
-                </div>
-                <div class="product-content" style="display: none">
-                    <p>强大的计算性能</p>
-                    <p>弹性的按需扩展</p>
-                    <p>更低的网络时延</p>
-                </div>
-                <div class="product-content-after" style="display: block">
-                    <p>采用数据切片技术构建的三层存储功能，切实保护客户数据的安全。同时可弹性扩展的资源用量，为客户业务在高峰期的顺畅保驾护航</p>
-                </div>
-                <div class="product-price">
-                    <p><span>49</span>元/月起</p>
-                </div>
-                <div class="product-action" style="display: block;">
-                    <a>立即选购</a>
-                </div>
-            </li>
-            <li class="server-product">
-                <div class="product-title">
-                    <img src="img/product_header_active_icon_02.png">
-                    <h2>服务器托管</h2>
-                    <p>安全贴心托管服务</p>
-                </div>
-                <div class="product-content">
-                    <p>完善的机房设施</p>
-                    <p>领先的硬件支持</p>
-                    <p>独有的骨干网络</p>
-                </div>
-                <div class="product-content-after">
-                    <p>T3+级别数据中心，具备完善的机房设施，自建光纤网络，独有的核心骨干网络有效保证高品质的网络环境和丰富的带宽资源</p>
-                </div>
-                <div class="product-price">
-                    <p><span>450</span>元/月起</p>
-                </div>
-                <div class="product-action">
-                    <a>立即选购</a>
-                </div>
-            </li>
-            <li class="server-product">
-                <div class="product-title">
-                    <img src="img/product_header_active_icon_03.png">
-                    <h2>云虚拟主机</h2>
-                    <p>云算虚拟主机服务</p>
-                </div>
-                <div class="product-content">
-                    <p>卓越的性能体验</p>
-                    <p>出色的防御能力</p>
-                    <p>丰富的带宽资源</p>
-                </div>
-                <div class="product-content-after">
-                    <p>架设在云高可用云服务器之上，具备高在线率、高安全性、高稳定性等优势，提供独立IP，特别适用于对网站运行质量有较高要求的用户</p>
-                </div>
-                <div class="product-price">
-                    <p><span>7</span>元/月起</p>
-                </div>
-                <div class="product-action">
-                    <a>立即选购</a>
-                </div>
-            </li>
-            <li class="server-product">
-                <div class="product-title ">
-                    <img src="img/product_header_active_icon_04.png">
-                    <h2>SSL证书</h2>
-                    <p>提供证书部署服务</p>
-                </div>
-                <div class="product-content">
-                    <p>顶级CA授权颁发</p>
-                    <p>加密保护数据</p>
-                    <p>支持所有设备</p>
-                </div>
-                <div class="product-content-after">
-                    <p>实现网站HTTPS，使网站可信，防劫持、防篡改、防监听。并对云上证书进行统一生命周期管理，简化证书部署，一键分发到云上产品</p>
-                </div>
-                <div class="product-price">
-                    <p><span>1</span>元/年起</p>
-                </div>
-                <div class="product-action">
-                    <a>立即选购</a>
-                </div>
-            </li>
-            <li class="server-product">
-                <div class="product-title">
-                    <img src="img/product_header_active_icon_05.png">
-                    <h2>域名注册</h2>
-                    <p>星级域名注册服务</p>
-                </div>
-                <div class="product-content">
-                    <p>域名实时过户</p>
-                    <p>智能双线解析</p>
-                    <p>whois隐私保护</p>
-                </div>
-                <div class="product-content-after">
-                    <p>超高的解析响应速度，强大的域名自助管理平台，免费的域名隐私保护服务，坚持让您花少量的费用，享更好的产品和服务</p>
-                </div>
-                <div class="product-price">
-                    <p><span>15</span>元/年起</p>
-                </div>
-                <div class="product-action">
-                    <a>立即选购</a>
-                </div>
-            </li>
-        </ul>
-        <!--侧边栏-->
-        <div class="consult" id="consult">
-            <div class="consult-close" onclick="onConsult(this)"></div>
-            <div class="consult-head">
-                <div></div>
-                <ins></ins>
-            </div>
-            <div class="consult-body">
-                <div class="group-def" onclick="showBbs()">
-                    <ins></ins>
-                    <span>默认分组</span>
-                </div>
-                <div  class="group-bj" onclick="showBbs()">
-                    <ins></ins>
-                    <span>北京</span>
-                </div>
-                <div  class="group-sh" onclick="showBbs()">
-                    <ins></ins>
-                    <span>上海</span>
-                </div>
-            </div>
-        </div>
-        <!--留言-->
-        <div class="bbs" id="bbs">
-            <div class="bss-head" id="bbs-head">
-                <div class="head-font">
-                    <p>请您留言</p>
-                    <span class='bbsclose1' onclick="onBbs(this)">+</span>
-                    <span class='bbsclose2' onclick="hiddrnBbs()"></span>
-                </div>
-            </div>
-            <div class="bss-main">
-                <form class="message">
-                    <textarea placeholder="请在此输入留言内容，我们会尽快与您联系! ( 必填 )"></textarea>
-                    <div class="name">
-                        <ins></ins>
-                        <input type="text" placeholder="姓名">
-                    </div>
-                    <div class="tel">
-                        <ins></ins>
-                        <input type="tel" placeholder="电话(必填)">
-                    </div>
-                    <div class="address">
-                        <ins></ins>
-                        <input type="text" placeholder="地址">
-                    </div>
-                    <div class="email">
-                    <ins></ins>
-                    <input type="email" placeholder="邮箱">
-                    </div>
-                    <input type="button" class="submit" value="提交">
-                </form>
-                <div class="mess-foot">
-                    <a href="http://www.marchsoft.cn/">
-                        <ins></ins>
-                        <span>咨询软件由三月提供</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <p>
-                <a href="javascript:;">JavaScript课程</a>
-                <span class="split"></span>
-                <a href="javascript:;">HTML5课程</a>
-                <span class="split"></span>
-                <a href="javascript:;">HTML+CSS课程</a>
-                <span class="split"></span>
-                <a href="javascript:;">视频教程</a>
-                <span class="split"></span>
-                <a href="javascript:;">课程案例</a>
-                <span class="split"></span>
-                <a href="javascript:;">联系方式</a>
-                <span class="split"></span>
-                <a href="javascript:;">关于我们</a>
-                <span class="split"></span>
-            </p>
-            <p>河南科技学院 <a href="http://www.marchsoft.cn/">三月软件工作室</a> &copy;版权所有</p>
-        </footer>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>智能社-主页</title>
+		<link type="text/css" href="css/common.css" rel="stylesheet" />
+		<link type="text/css" href="css/index.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="userinfo">
+			<p>用户信息</p>
+			<a class="info-close" onclick="hiddenInfo()"></a>
+			<div class="info">
+				<span>用户名：</span>
+			</div>
+			<div class="info">
+				<span>邮&emsp;箱：</span>
+			</div>
+			<div class="info">
+				<span>手机号：</span>
+			</div>
+			<button type='button' onclick="changePass()">更改密码</button>
+			<button type='button' onclick="exitLogin()">退出登陆</button>
+		</div>
+		<div id="login" onclick="hiddenLogin()">
+			<div class="login-main" id="login-main">
+				<p>登陆</p>
+				<form id="login-login">
+					<div class="uname" id="loginname">
+						<ins></ins>
+						<input type="text" placeholder="用户名" name="username" form="login-login" autocomplete="off">
+					</div>
+					<div class="upass" id="loginpass">
+						<ins></ins>
+						<input type="password" placeholder="密码" name="password" form="login-login">
+					</div>
+					<button type='button' onclick="user_login()">登陆</button>
+					<!--<button type="submit" form="login-form" formaction="" formmethod="post">提交</button>-->
+					<button type='button' onclick="registerMove()">注册</button>
+				</form>
+				<form id="login-register">
+					<div class="uname" id="uname">
+						<ins></ins>
+						<input type="text" placeholder="用户名" name="username" form="login-register" autocomplete="off">
+					</div>
+					<div class="uemail" id="uemail">
+						<ins></ins>
+						<input type="email" placeholder="邮箱" name="email" form="login-register" autocomplete="off">
+					</div>
+					<div class="utel" id="utel">
+						<ins></ins>
+						<input type="tel" placeholder="电话" autocomplete="off">
+					</div>
+					<div class="upass" id="upass">
+						<ins></ins>
+						<input type="password" placeholder="密码" name="password" form="login-register">
+					</div>
+					<div id="level" class="pw-strength">
+						<div class="pw-bar"></div>
+						<div class="pw-bar-on" id="pw-bar-on"></div>
+						<div class="pw-txt">
+							<span>弱</span>
+							<span>中</span>
+							<span>强</span>
+						</div>
+					</div>
+					<div class="upass" id="upass1">
+						<ins></ins>
+						<input type="password" placeholder="确认密码" name="password" form="login-register">
+					</div>
+					<div class="ucode" id="ucode">
+						<input type="text" placeholder="验证码">
+						<i onclick="changeCode()"></i>
+						<span onclick="changeCode()">换一张</span>
+					</div>
+					<button type='button' id="register" onclick="clickRegister()">注册</button>
+					<!--<button type="submit" form="login-form" formaction="" formmethod="post">提交</button>-->
+					<button type='button' onclick="registerMove()">返回</button>
+				</form>
+			</div>
+		</div>
+		<a id="toTop" onclick="toTop()" onmouseover="toTopHover()" onmouseout="toTophide()"></a>
+		<div class="content-main">
+			<div class="background"></div>
+			<div id="content" class="content">
+				<a id="user" onclick="showLogin()"></a>
+				<a id="loginuser" onclick="showInfo()"></a>
+				<nav>
+					<img src="img/logo.png">
+					<ul>
+						<div id="nav-hover" class="nav-hover" onclick=""></div>
+						<li class="home">
+							<a href="javascript:;" class="active">首&emsp;页</a>
+						</li>
+						<span>l</span>
+						<li>
+							<a href="javascript:;">Java大数据</a>
+						</li>
+						<span>l</span>
+						<li>
+							<a href="javascript:;">JS课程</a>
+						</li>
+						<span>l</span>
+						<li>
+							<a href="javascript:;">HTML5课程</a>
+						</li>
+						<span>l</span>
+						<li>
+							<a href="javascript:;">视频教程</a>
+						</li>
+						<span>l</span>
+						<li>
+							<a href="html/waterfall.html">课程案例</a>
+						</li>
+						<span>l</span>
+						<li>
+							<a href="javascript:;">联系方式</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div id="slide">
+				<ins id="prev"></ins>
+				<ins id="prev_action" onmouseover="chanOpa_low(this,1)" onmouseout="chanOpa_low(this,0)"></ins>
+				<ins id="next"></ins>
+				<ins id="next_action" onmouseover="chanOpa_low(this,1)" onmouseout="chanOpa_low(this,0)"></ins>
+				<ul>
+					<li style="opacity: 1">
+						<a href="javascript:;"><img src="img/title1.png" /></a>
+					</li>
+					<li>
+						<a href="javascript:;"><img src="img/title2.png" /></a>
+					</li>
+					<li>
+						<a href="javascript:;"><img src="img/title3.png" /></a>
+					</li>
+					<li>
+						<a href="javascript:;"><img src="img/title4.png" /></a>
+					</li>
+					<li>
+						<a href="javascript:;"><img src="img/title5.png" /></a>
+					</li>
+				</ul>
+				<div id="slide_menu">
+					<a>
+						<img src="img/point1.png">
+						<img src="img/point2.png">
+					</a>
+					<a>
+						<img src="img/point1.png">
+						<img src="img/point2.png" style="opacity: 0">
+					</a>
+					<a>
+						<img src="img/point1.png">
+						<img src="img/point2.png" style="opacity: 0">
+					</a>
+					<a>
+						<img src="img/point1.png">
+						<img src="img/point2.png" style="opacity: 0">
+					</a>
+					<a>
+						<img src="img/point1.png">
+						<img src="img/point2.png" style="opacity: 0">
+					</a>
+				</div>
+			</div>
+			<div class="title">
+				<div class="title-font">
+					<span>热门课程</span>
+					<p>Hot course</p>
+				</div>
+			</div>
+			<div class="list">
+				<ul>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/1.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">大数据与机器学习就业班</a></h3>
+									<h4><a href="javascript:;">大数据、云计算、数据挖掘、机器学习，是时下最稀缺的人才，本课程从零开始带你领略这些前沿技术</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/2.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">JavaEE全栈开发就业班</a></h3>
+									<h4><a href="javascript:;">企业级开发首选平台，本课程为培养优秀JavaEE开发工程师而生，采用项目式教学，感受最真实的项目体验</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/2.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">大数据与机器学习就业班</a></h3>
+									<h4><a href="javascript:;">学习，是时下最稀缺的人才，本课程从零开始带你领略这些前沿技术</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/4.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">零基础UI就业班</a></h3>
+									<h4><a href="javascript:;">从零开始，2个月拥有2年设计师经验，完美应对各类设计需求</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/5.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">颠覆式前端开发</a></h3>
+									<h4><a href="javascript:;">全面掌握Angular、Vue、React等最新应用框架，融汇实战及项目开发技巧，感受颠覆式前端开发体验</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/6.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">移动端HTML5开发</a></h3>
+									<h4><a href="javascript:;">理解HTML5移动端开发技术，掌握WebpApp和HybridApp实战开发技巧，感受移动互联网开发之美</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/7.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">前端-全栈就业直通车</a></h3>
+									<h4><a href="javascript:;">从零基础的新人，到成长为一名独当一面的全栈开发工程师，需要多久？在智能社，这个答案是4.5个月</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/8.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">JavaScript核心开发</a></h3>
+									<h4><a href="javascript:;">所有前端开发者都知道一个道理：JavaScript才是整个前端开发的核心，本课程带你顿悟JavaScript真谛</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/9.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">全栈之道-Node.js开发</a></h3>
+									<h4><a href="javascript:;">一门课程、一项技术、一片天地，助你从前端开发工程师，升级为一名合格的全栈开发工程师</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/10.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">零基础Web前端开发</a></h3>
+									<h4><a href="javascript:;">零基础入门，到深入Web前端开发核心，彻底领悟HTML、JavaScript、HTML5技术，成就Web开发中坚力量</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/11.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">前端-全栈开发精英课程</a></h3>
+									<h4><a href="javascript:;">若对前端开发有所涉猎，本课程就是为你量身定制的：深入JavaScript核心、感受颠覆式前端开发、打通全栈脉络</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="listBG">
+							<div>
+								<img src="img/12.png">
+								<div class="list-content">
+									<h3><a href="javascript:;">在线课堂</a></h3>
+									<h4><a href="javascript:;">任何时间、任何地点，只要你渴望知识，只要你不甘于现状，智能社就会是你的7*24学习伙伴</a></h4>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="title">
+				<div class="title-font">
+					<span>新闻中心</span>
+					<p>News center</p>
+				</div>
+			</div>
+			<div class="news">
+				<div class="news1">
+					<div class="news-list">
+						<span><a href="javascript:;">java及大数据免费班招生啦！</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">北京亦庄前端人才双选会举行通知</a></span>
+						<span class="new-date">2016-11-02</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">智能社明星学员教你快速进入学习状态！（2016.07.04班）</a></span>
+						<span class="new-date">2016-11-11</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">双十一报名，送Nodejs课程！</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">Node.JS-经典教程</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">更多内容尽在-Vue.JS直播精讲！</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">智能社来甘肃中医药大学啦！</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+				</div>
+				<div class="news2">
+					<div class="news-list">
+						<span><a href="javascript:;">智能社-Javascript之D3.js教程</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">智能社明星学员教你快速进入学习状态！（2016.07.18班）</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">大神周末晋修班开课咯（大神讲师+精英课程）</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">智能社来大连东软信息学院工作坊啦！</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">辽宁理工职业学院领导莅临智能社考察</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">智能社---详解NodeJS中的包管理</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+					<div class="news-list">
+						<span><a href="javascript:;">深圳公开课即将开讲！</a></span>
+						<span class="new-date">2017-01-19</span>
+					</div>
+				</div>
+			</div>
+			<div id="clock-3D">
+				<ul class="clock-hour1">
+					<li class="clock-top"><span>0</span></li>
+					<li class="clock-button"><span>0</span></li>
+					<li class="clock-right"><span>0</span></li>
+					<li class="clock-left"><span>0</span></li>
+					<li class="clock-after"><span>0</span></li>
+					<li class="clock-front"><span>0</span></li>
+				</ul>
+				<ul class="clock-hour2">
+					<li class="clock-top"><span>0</span></li>
+					<li class="clock-button"><span>0</span></li>
+					<li class="clock-right"><span>0</span></li>
+					<li class="clock-left"><span>0</span></li>
+					<li class="clock-after"><span>0</span></li>
+					<li class="clock-front"><span>0</span></li>
+				</ul>
+				<span class="split"></span>
+				<ul class="clock-min1">
+					<li class="clock-top"><span>0</span></li>
+					<li class="clock-button"><span>0</span></li>
+					<li class="clock-right"><span>0</span></li>
+					<li class="clock-left"><span>0</span></li>
+					<li class="clock-after"><span>0</span></li>
+					<li class="clock-front"><span>0</span></li>
+				</ul>
+				<ul class="clock-min2">
+					<li class="clock-top"><span>0</span></li>
+					<li class="clock-button"><span>0</span></li>
+					<li class="clock-right"><span>0</span></li>
+					<li class="clock-left"><span>0</span></li>
+					<li class="clock-after"><span>0</span></li>
+					<li class="clock-front"><span>0</span></li>
+				</ul>
+				<span class="split"></span>
+				<ul class="clock-sec1">
+					<li class="clock-top"><span>0</span></li>
+					<li class="clock-button"><span>0</span></li>
+					<li class="clock-right"><span>0</span></li>
+					<li class="clock-left"><span>0</span></li>
+					<li class="clock-after"><span>0</span></li>
+					<li class="clock-front"><span>0</span></li>
+				</ul>
+				<ul class="clock-sec2">
+					<li class="clock-top"><span>0</span></li>
+					<li class="clock-button"><span>0</span></li>
+					<li class="clock-right"><span>0</span></li>
+					<li class="clock-left"><span>0</span></li>
+					<li class="clock-after"><span>0</span></li>
+					<li class="clock-front"><span>0</span></li>
+				</ul>
+			</div>
+			<div class="title">
+				<div class="title-font">
+					<span>3D魔方</span>
+					<p>3D magic</p>
+				</div>
+			</div>
+			<div class="magicCube">
+				<div class="wrap">
+					<div class="out-front"></div>
+					<div class="out-back"></div>
+					<div class="out-left"></div>
+					<div class="out-right"></div>
+					<div class="out-top"></div>
+					<div class="out-bottom"></div>
+
+					<span class="in-front"></span>
+					<span class="in-back"></span>
+					<span class="in-left"></span>
+					<span class="in-right"></span>
+					<span class="in-top"></span>
+					<span class="in-bottom"></span>
+				</div>
+			</div>
+			<div class="title">
+				<div class="title-font">
+					<span>服务产品</span>
+					<p>Service products</p>
+				</div>
+			</div>
+			<ul id="product">
+				<li class="server-product server-product-index" style="background: url('img/producet_bg_1.jpg')">
+					<div class="product-title">
+						<img src="img/product_header_active_icon_01.png">
+						<h2>云服务器</h2>
+						<p>极速稳定计算服务</p>
+					</div>
+					<div class="product-content" style="display: none">
+						<p>强大的计算性能</p>
+						<p>弹性的按需扩展</p>
+						<p>更低的网络时延</p>
+					</div>
+					<div class="product-content-after" style="display: block">
+						<p>采用数据切片技术构建的三层存储功能，切实保护客户数据的安全。同时可弹性扩展的资源用量，为客户业务在高峰期的顺畅保驾护航</p>
+					</div>
+					<div class="product-price">
+						<p><span>49</span>元/月起</p>
+					</div>
+					<div class="product-action" style="display: block;">
+						<a>立即选购</a>
+					</div>
+				</li>
+				<li class="server-product">
+					<div class="product-title">
+						<img src="img/product_header_active_icon_02.png">
+						<h2>服务器托管</h2>
+						<p>安全贴心托管服务</p>
+					</div>
+					<div class="product-content">
+						<p>完善的机房设施</p>
+						<p>领先的硬件支持</p>
+						<p>独有的骨干网络</p>
+					</div>
+					<div class="product-content-after">
+						<p>T3+级别数据中心，具备完善的机房设施，自建光纤网络，独有的核心骨干网络有效保证高品质的网络环境和丰富的带宽资源</p>
+					</div>
+					<div class="product-price">
+						<p><span>450</span>元/月起</p>
+					</div>
+					<div class="product-action">
+						<a>立即选购</a>
+					</div>
+				</li>
+				<li class="server-product">
+					<div class="product-title">
+						<img src="img/product_header_active_icon_03.png">
+						<h2>云虚拟主机</h2>
+						<p>云算虚拟主机服务</p>
+					</div>
+					<div class="product-content">
+						<p>卓越的性能体验</p>
+						<p>出色的防御能力</p>
+						<p>丰富的带宽资源</p>
+					</div>
+					<div class="product-content-after">
+						<p>架设在云高可用云服务器之上，具备高在线率、高安全性、高稳定性等优势，提供独立IP，特别适用于对网站运行质量有较高要求的用户</p>
+					</div>
+					<div class="product-price">
+						<p><span>7</span>元/月起</p>
+					</div>
+					<div class="product-action">
+						<a>立即选购</a>
+					</div>
+				</li>
+				<li class="server-product">
+					<div class="product-title ">
+						<img src="img/product_header_active_icon_04.png">
+						<h2>SSL证书</h2>
+						<p>提供证书部署服务</p>
+					</div>
+					<div class="product-content">
+						<p>顶级CA授权颁发</p>
+						<p>加密保护数据</p>
+						<p>支持所有设备</p>
+					</div>
+					<div class="product-content-after">
+						<p>实现网站HTTPS，使网站可信，防劫持、防篡改、防监听。并对云上证书进行统一生命周期管理，简化证书部署，一键分发到云上产品</p>
+					</div>
+					<div class="product-price">
+						<p><span>1</span>元/年起</p>
+					</div>
+					<div class="product-action">
+						<a>立即选购</a>
+					</div>
+				</li>
+				<li class="server-product">
+					<div class="product-title">
+						<img src="img/product_header_active_icon_05.png">
+						<h2>域名注册</h2>
+						<p>星级域名注册服务</p>
+					</div>
+					<div class="product-content">
+						<p>域名实时过户</p>
+						<p>智能双线解析</p>
+						<p>whois隐私保护</p>
+					</div>
+					<div class="product-content-after">
+						<p>超高的解析响应速度，强大的域名自助管理平台，免费的域名隐私保护服务，坚持让您花少量的费用，享更好的产品和服务</p>
+					</div>
+					<div class="product-price">
+						<p><span>15</span>元/年起</p>
+					</div>
+					<div class="product-action">
+						<a>立即选购</a>
+					</div>
+				</li>
+			</ul>
+			<!--侧边栏-->
+			<div class="consult" id="consult">
+				<div class="consult-close" onclick="onConsult(this)"></div>
+				<div class="consult-head">
+					<div></div>
+					<ins></ins>
+				</div>
+				<div class="consult-body">
+					<div class="group-def" onclick="showBbs()">
+						<ins></ins>
+						<span>默认分组</span>
+					</div>
+					<div class="group-bj" onclick="showBbs()">
+						<ins></ins>
+						<span>北京</span>
+					</div>
+					<div class="group-sh" onclick="showBbs()">
+						<ins></ins>
+						<span>上海</span>
+					</div>
+				</div>
+			</div>
+			<!--留言-->
+			<div class="bbs" id="bbs">
+				<div class="bss-head" id="bbs-head">
+					<div class="head-font">
+						<p>请您留言</p>
+						<span class='bbsclose1' onclick="onBbs(this)">+</span>
+						<span class='bbsclose2' onclick="hiddrnBbs()"></span>
+					</div>
+				</div>
+				<div class="bss-main">
+					<form class="message">
+						<textarea placeholder="请在此输入留言内容，我们会尽快与您联系! ( 必填 )"></textarea>
+						<div class="name">
+							<ins></ins>
+							<input type="text" placeholder="姓名">
+						</div>
+						<div class="tel">
+							<ins></ins>
+							<input type="tel" placeholder="电话(必填)">
+						</div>
+						<div class="address">
+							<ins></ins>
+							<input type="text" placeholder="地址">
+						</div>
+						<div class="email">
+							<ins></ins>
+							<input type="email" placeholder="邮箱">
+						</div>
+						<input type="button" class="submit" value="提交">
+					</form>
+					<div class="mess-foot">
+						<a href="http://www.marchsoft.cn/">
+							<ins></ins>
+							<span>咨询软件由三月提供</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<footer>
+				<p>
+					<a href="javascript:;">JavaScript课程</a>
+					<span class="split"></span>
+					<a href="javascript:;">HTML5课程</a>
+					<span class="split"></span>
+					<a href="javascript:;">HTML+CSS课程</a>
+					<span class="split"></span>
+					<a href="javascript:;">视频教程</a>
+					<span class="split"></span>
+					<a href="javascript:;">课程案例</a>
+					<span class="split"></span>
+					<a href="javascript:;">联系方式</a>
+					<span class="split"></span>
+					<a href="javascript:;">关于我们</a>
+					<span class="split"></span>
+				</p>
+				<p>河南科技学院
+					<a href="http://www.marchsoft.cn/">三月软件工作室</a> &copy;版权所有</p>
+			</footer>
+		</div>
+	</body>
+
 </html>
+<script src="js/jquery-1.12.4.min.js" defer></script>
+<script src="js/MD5.js" defer></script>
+<script src="js/sowing-map.js" defer></script>
+<script src="js/move.js" defer></script>
+<script src="js/action.js" defer></script>
+<script src="js/3D_clock.js" defer></script>
+<script src="js/login.js" defer></script>
+<script src="js/meteor.js" defer></script>
+<script src="js/common.js" defer></script>
